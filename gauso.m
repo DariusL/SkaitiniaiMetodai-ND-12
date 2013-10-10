@@ -1,23 +1,26 @@
-function M = gauso(A)
-    M = A;
+function x = gauso(A)
     for i = 1:4
         m = i;
         for j = i:4
-            if(M(j, i) > M(m, i))
+            if(A(j, i) > A(m, i))
                 m = j;
             end
         end
-        if(M(m, i) == 0)
+        if(A(m, i) == 0)
                 continue;
         end
         if(m ~= i)
-            temp = M(m, :);
-            M(m, :) = M(i, :);
-            M(i, :) = temp;
+            temp = A(m, :);
+            A(m, :) = A(i, :);
+            A(i, :) = temp;
         end
-        M(i, :) = M(i, :) / M(i, i);
+        A(i, :) = A(i, :) / A(i, i);
         for j = i+1:4
-            M(j, :) = M(j, :) - M(i, :) * M(j, i);
+            A(j, :) = A(j, :) - A(i, :) * A(j, i);
         end
+    end
+    x=zeros(4, 1);
+    for i = 4:-1:1
+        x(i,:)=(A(i,5:end)-A(i,i+1:4)*x(i+1:4,:))/A(i,i);
     end
 end
