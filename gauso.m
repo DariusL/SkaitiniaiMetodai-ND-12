@@ -2,7 +2,7 @@ function x = gauso(A)
     for i = 1:4
         m = i;
         for j = i:4
-            if(A(j, i) > A(m, i))
+            if(abs(A(j, i)) > abs(A(m, i)))
                 m = j;
             end
         end

@@ -10,6 +10,6 @@ function x = atvirkstines(A)
     
     x=zeros(4, 1);
     for i = 4:-1:1
-        x(i,:)=(A(i,5:end)-A(i,i+1:4)*x(i+1:4,:))/A(i,i);
+        x(i)=(A(i,5:end)-A(i,i+1:4)*x(i+1:4))/A(i,i);
     end
 end
